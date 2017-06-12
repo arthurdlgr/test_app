@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   
   get 'about', to: 'welcome#about'
   
+  resources :articles
+  
+  
 end
 
