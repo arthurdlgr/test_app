@@ -1,0 +1,19 @@
+<h1> Voici l'article crée</h1>
+
+<p>
+  Titre : <%= @article.title %>
+  
+</p>
+
+<p>
+  Description : <%= @article.description %>
+  
+  
+</p>
+
+<p>
+  
+  <%= link_to 'voir la liste des articles', articles_path %>
+  <%= link_to 'Editer l\'article', edit_article_path(@article) %>
+  
+</p>
