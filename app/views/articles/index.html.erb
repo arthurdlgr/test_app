@@ -8,6 +8,7 @@
 <th> Description</th>
 <th> Show </th>
 <th> Edit </th>
+<th> Détruire </th>
 </tr>
 
 <%  @articles.each do |article| %>
@@ -16,6 +17,7 @@
 <td> <%= article.description %> </td>
 <td> <%= link_to 'show', article_path(article) %> </td>
 <td> <%= link_to 'edit', edit_article_path(article) %> </td>
+<td>  <%= link_to 'détruire', article_path(article), method: :delete, data: {confirm: "T'es sûr ?"} %> </td>
 
 </tr>
 <% end %>
