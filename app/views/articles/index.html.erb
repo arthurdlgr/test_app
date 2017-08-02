@@ -9,6 +9,8 @@
 <th> Show </th>
 <th> Edit </th>
 <th> Détruire </th>
+<th> Date de création</th>
+<th> Crée par </th>
 </tr>
 
 <%  @articles.each do |article| %>
@@ -18,7 +20,8 @@
 <td> <%= link_to 'show', article_path(article) %> </td>
 <td> <%= link_to 'edit', edit_article_path(article) %> </td>
 <td>  <%= link_to 'détruire', article_path(article), method: :delete, data: {confirm: "T'es sûr ?"} %> </td>
-
+<th> <%= time_ago_in_words(article.created_at) %> </th>
+<th> <%= article.user.username if article.user %> </th>
 </tr>
 <% end %>
 </table>
