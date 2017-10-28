@@ -17,7 +17,7 @@
         
         <div class="col-sm-8">
         
-          <%= f.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true %>
+          <%= f.text_field :title, class: "form-control", placeholder: "Titre de l'article", autofocus: true %>
         
         </div>
         
@@ -38,6 +38,24 @@
         </div>
         
       </div>
+      
+      <div class="form-group">
+
+      <div class="row">
+      
+        <div class="col-sm-offset-2 col-sm-8">
+        
+          <%= f.collection_check_boxes :category_ids, Category.all.sort_by(&:name), :id, :name do |cb| %>
+          
+            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          
+          <% end %>
+        
+        </div>
+        
+      </div>
+    
+    </div>
         
       <div class="form-group">
         
@@ -48,8 +66,11 @@
         </div>
         
       </div>
+      
     
     <% end %>
+    
+    
     
     <div class="col-xs-4 col-xs-offset-4">
     

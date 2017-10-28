@@ -1,0 +1,7 @@
+<h1> hello <%= @user.username %></h1>
+
+<%= gravatar_for(@user, size: 200) %>
+
+<%= render "articles/article", obj:@user_pagination %>
+
+<%= will_paginate @user_pagination %>

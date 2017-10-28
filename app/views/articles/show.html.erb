@@ -12,7 +12,22 @@
   <div class="article-actions">
     
     <%= link_to 'voir la liste des articles', articles_path, class: "btn btn-xs btn-primary"  %>
-    <%= link_to 'Editer l\'article', edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+    
+    <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+     <%= link_to 'Editer l\'article', edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+    <%= link_to 'detruire l\'article', article_path(@article) ,method: :delete, data: {confirm: 'Are you sure ?'}, class: "btn btn-xs btn-danger" %>
+    <% end %>
+    <p>
+      Crée par <%= @article.user.username if @article.user%>
+      
+    </p>
+    
+    <% if @article.categories.any?%>
+      <p>
+          Categories : <%=render @article.categories %>
+       
+      </p>
+    <%end%>
     
   </div>
 </div>

@@ -1,0 +1,36 @@
+<table>
+  
+  
+
+<tr> 
+<th> Title </th>
+<th> Description</th>
+<th> Show </th>
+<th> Edit </th>
+<th> Détruire </th>
+<th> Date de création</th>
+<th> Crée par </th>
+</tr>
+
+<%  obj.each do |article| %>
+<tr> 
+<td> <%= article.title %> </td>
+<td> <%= article.description %> </td>
+<td> <%= link_to 'show', article_path(article) %> </td>
+<% if logged_in? && (article.user == current_user || current_user.admin?) %>
+  <td> <%= link_to 'edit', edit_article_path(article) %> </td>
+  <td>  <%= link_to 'détruire', article_path(article), method: :delete, data: {confirm: "T'es sûr ?"} %> </td>
+<% end %>
+<th> <%= time_ago_in_words(article.created_at) %> </th>
+<th> <%= article.user.username if article.user %> </th>
+<th>   <% if article.categories.any?%>
+      <p>
+          Categories : <%=render article.categories %>
+       
+      </p>
+    <%end%>
+    
+</th>
+</tr>
+<% end %>
+</table>

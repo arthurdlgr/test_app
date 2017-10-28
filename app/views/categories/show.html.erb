@@ -1,0 +1,20 @@
+<h1> Listing categories </h1>
+
+<p> 
+Vous souhaitez éditer la category <%= @category.name %> ?
+</p>
+
+<% if logged_in? && current_user.admin?  %>
+<%= link_to "EDITER", edit_category_path(@category) %>
+<% end%>
+
+<%= will_paginate @category_articles %>
+
+
+<%= render 'articles/article', obj: @category_articles %>
+
+<div align="center">
+
+<%= will_paginate @category_articles %>
+
+</div>
